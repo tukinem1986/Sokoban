@@ -100,10 +100,10 @@ void obsluzMenu(struct Window *w)
 	WORD kolor=CGA;
 	struct IntuiMessage *msg;
 
-	While (!wyjscie)
+	while (!wyjscie)
 	{
 		WaitPort(w->UserPort);
-		While (msg=(sctruct IntuiMessage *)GetMsg(w->UserPort))
+		while (msg=(sctruct IntuiMessage *)GetMsg(w->UserPort))
 		{
 			if (msg->Class==IDCMP_RAWKEY)
 			{
