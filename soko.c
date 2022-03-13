@@ -6,12 +6,17 @@
 #include <clib/graphics_protos.h>
 #include <clib/exec_protos.h>
 #define KEY_ESC 0x45
+#define KEY_A 0x20
+#define KEY_T 0x14
+#define KEY_C 0x33
+#define KEY_R 0x13
+#define KEY_H 0x25
 
 enum
 {
-	CGA,
-	TANDY,
-	AMIGA
+	KOLOR_CGA,
+	KOLOR_TANDY,
+	KOLOR_AMIGA
 };
 
 void narysujMenu(struct RastPort *rp);
@@ -92,32 +97,38 @@ void narysujMenu(struct RastPort *rp)
 	Text(rp,napisstartowy7,strlen(napisstartowy7));
 }
 
+struct menuSokobana
+{
+	WORD kolor;
+	BOOL wyjscie;
+};
 
 
 void obsluzMenu(struct Window *w)
 {
+	struct menuSokobana menu;
 	BOOL wyjscie=FALSE;
-	WORD kolor=CGA;
+	WORD kolor=KOLOR_CGA;
 	struct IntuiMessage *msg;
 
 	while (!wyjscie)
 	{
 		WaitPort(w->UserPort);
-		while (msg=(sctruct IntuiMessage *)GetMsg(w->UserPort))
+		while (msg=(struct IntuiMessage *)GetMsg(w->UserPort))
 		{
 			if (msg->Class==IDCMP_RAWKEY)
 			{
 				if (msg->Code==KEY_C)
 				{
-					kolor=CGA;
+					kolor=KOLOR_CGA;
 				}
 				else if (msg->Code==KEY_A)
 				{
-					kolor=AMIGA;
+					kolor=KOLOR_AMIGA;
 				}
 				else if (msg->Code==KEY_T)
 				{
-					kolor=TANDY;
+					kolor=KOLOR_TANDY;
 				}
 				else if (msg->Code==KEY_ESC)
 				{
@@ -127,4 +138,7 @@ void obsluzMenu(struct Window *w)
 			ReplyMsg((struct Message *)msg);
 		}
 	}
+	menu.kolor=kolor;
+	menu.wyjscie=wyjscie;
+	return(menu);
 }
