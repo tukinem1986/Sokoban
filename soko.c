@@ -5,6 +5,13 @@
 #include <clib/intuition_protos.h>
 #include <clib/graphics_protos.h>
 #include <clib/exec_protos.h>
+
+struct menuSokobana
+{
+	WORD kolor;
+	BOOL wyjscie;
+};
+
 #define KEY_ESC 0x45
 #define KEY_A 0x20
 #define KEY_T 0x14
@@ -20,7 +27,7 @@ enum
 };
 
 void narysujMenu(struct RastPort *rp);
-void obsluzMenu(struct Window *w);
+struct menuSokobana obsluzMenu(struct Window *w);
 
 int main()
 {
@@ -97,14 +104,9 @@ void narysujMenu(struct RastPort *rp)
 	Text(rp,napisstartowy7,strlen(napisstartowy7));
 }
 
-struct menuSokobana
-{
-	WORD kolor;
-	BOOL wyjscie;
-};
 
 
-void obsluzMenu(struct Window *w)
+struct menuSokobana obsluzMenu(struct Window *w)
 {
 	struct menuSokobana menu;
 	BOOL wyjscie=FALSE;
