@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <intuition/intuition.h>
-
+#include <sokomenu.h>
 #include <clib/intuition_protos.h>
 #include <clib/graphics_protos.h>
 #include <clib/exec_protos.h>
@@ -19,20 +19,16 @@ struct menuSokobana
 #define KEY_R 0x13
 #define KEY_H 0x25
 
-enum
-{
-	KOLOR_CGA,
-	KOLOR_TANDY,
-	KOLOR_AMIGA
-};
+
 
 void narysujMenu(struct RastPort *rp);
-struct menuSokobana obsluzMenu(struct Window *w);
+struct menuSokobana menu=obsluzMenu(w);
 
 int main()
 {
 	struct TextAttr ta={"topaz.font",8,FS_NORMAL,FPF_ROMFONT};
 	struct Screen *s;
+	struct menuSokobana menu=obsluzMenu(w);
 	if (s=OpenScreenTags(NULL,
 		SA_Quiet,	TRUE,
 		SA_Depth,	4,
@@ -65,6 +61,7 @@ int main()
 		}
 		CloseScreen(s);
 	}
+
 	return(0);
 }
 
@@ -102,45 +99,4 @@ void narysujMenu(struct RastPort *rp)
 
 	Move (rp,25,200);
 	Text(rp,napisstartowy7,strlen(napisstartowy7));
-}
-
-
-
-struct menuSokobana obsluzMenu(struct Window *w)
-{
-	struct menuSokobana menu;
-	BOOL wyjscie=FALSE;
-	WORD kolor=KOLOR_CGA;
-	struct IntuiMessage *msg;
-
-	while (!wyjscie)
-	{
-		WaitPort(w->UserPort);
-		while (msg=(struct IntuiMessage *)GetMsg(w->UserPort))
-		{
-			if (msg->Class==IDCMP_RAWKEY)
-			{
-				if (msg->Code==KEY_C)
-				{
-					kolor=KOLOR_CGA;
-				}
-				else if (msg->Code==KEY_A)
-				{
-					kolor=KOLOR_AMIGA;
-				}
-				else if (msg->Code==KEY_T)
-				{
-					kolor=KOLOR_TANDY;
-				}
-				else if (msg->Code==KEY_ESC)
-				{
-					wyjscie=TRUE;
-				}
-			}
-			ReplyMsg((struct Message *)msg);
-		}
-	}
-	menu.kolor=kolor;
-	menu.wyjscie=wyjscie;
-	return(menu);
-}
+};
