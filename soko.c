@@ -6,15 +6,6 @@
 #include <clib/graphics_protos.h>
 #include <clib/exec_protos.h>
 
-struct menuSokobana
-{
-	WORD kolor;
-	BOOL wyjscie;
-};
-
-
-
-
 
 
 
