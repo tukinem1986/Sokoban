@@ -8,12 +8,16 @@ BOOL wybierzSterowanie(struct Window *w, struct menuSokobana *menu);
 
 struct menuSokobana obsluzMenu(struct Window *w)
 {
+	char napisstartowy8[]="PRESS: J <JOYSTICK> or K <KEYBOARD>";
 	struct menuSokobana menu;
 	
 	if (!wybierzKolor(w, &menu))
 		return(menu);
 		
 	/* Tutaj dorysuj menu wyboru sterowania */
+	Move (rp,100,220);
+	SetAPen(rp,1);
+	Text(rp,napisstartowy8,strlen(napisstartowy8));
 		
 	if (!wybierzSterowanie(w, &menu))
 		return(menu);

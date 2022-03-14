@@ -12,12 +12,7 @@ struct menuSokobana
 	BOOL wyjscie;
 };
 
-#define KEY_ESC 0x45
-#define KEY_A 0x20
-#define KEY_T 0x14
-#define KEY_C 0x33
-#define KEY_R 0x13
-#define KEY_H 0x25
+
 
 
 
@@ -99,4 +94,7 @@ void narysujMenu(struct RastPort *rp)
 
 	Move (rp,25,200);
 	Text(rp,napisstartowy7,strlen(napisstartowy7));
+	
+	move (rp,25,220);
+	Text(rp,napisstartowy8,strlen(napisstartowy8));
 };
