@@ -14,10 +14,7 @@ struct menuSokobana obsluzMenu(struct Window *w)
 	if (!wybierzKolor(w, &menu))
 		return(menu);
 		
-	/* Tutaj dorysuj menu wyboru sterowania */
-	Move (rp,25,220);
-	SetAPen(rp,1);
-	Text(rp,napisstartowy8,strlen(napisstartowy8));
+	narysujDrugieMenu(w->RPort);
 		
 	if (!wybierzSterowanie(w, &menu))
 		return(menu);

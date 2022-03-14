@@ -27,3 +27,4 @@ enum
 	STER_KLAWIATURA
 };
 struct menuSokobana obsluzMenu(struct Window *w);
+void narysujDrugieMenu(struct RastPort *rp);

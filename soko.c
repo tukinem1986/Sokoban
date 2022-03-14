@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <intuition/intuition.h>
-#include <sokomenu.h>
+#include "sokomenu.h"
 #include <clib/intuition_protos.h>
 #include <clib/graphics_protos.h>
 #include <clib/exec_protos.h>
@@ -72,7 +72,6 @@ void narysujMenu(struct RastPort *rp)
 	char napisstartowy5[]="T       TANDY MODE";
 	char napisstartowy6[]="A     NEW AMIGA MODE";
 	char napisstartowy7[]="ENTER YOUR SYSTEM:";
-	char napisstartowy8[]="PRESS: J <JOYSTICK> or K <KEYBOARD>";
 	Move (rp,100,y);
 	SetAPen(rp,1);
 	Text(rp,napisstartowy1,strlen(napisstartowy1));
@@ -95,3 +94,10 @@ void narysujMenu(struct RastPort *rp)
 	Move (rp,25,200);
 	Text(rp,napisstartowy7,strlen(napisstartowy7));
 };
+
+void narysujDrugieMenu (struct Rastport *rp)
+{
+	char napisstartowy8[]="PRESS: J <JOYSTICK> or K <KEYBOARD>";
+	Move (rp,25,220);
+	Text (rp,napisstartowy8,strlen(napisstartowy8));
+}
