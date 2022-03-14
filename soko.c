@@ -94,7 +94,4 @@ void narysujMenu(struct RastPort *rp)
 
 	Move (rp,25,200);
 	Text(rp,napisstartowy7,strlen(napisstartowy7));
-	
-	move (rp,25,220);
-	Text(rp,napisstartowy8,strlen(napisstartowy8));
 };

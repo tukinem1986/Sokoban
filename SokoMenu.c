@@ -15,7 +15,7 @@ struct menuSokobana obsluzMenu(struct Window *w)
 		return(menu);
 		
 	/* Tutaj dorysuj menu wyboru sterowania */
-	Move (rp,100,220);
+	Move (rp,25,220);
 	SetAPen(rp,1);
 	Text(rp,napisstartowy8,strlen(napisstartowy8));
 		
