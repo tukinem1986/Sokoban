@@ -21,14 +21,14 @@ struct menuSokobana
 
 
 
-void narysujMenu(struct RastPort *rp);
-struct menuSokobana menu=obsluzMenu(w);
+
+
 
 int main()
 {
 	struct TextAttr ta={"topaz.font",8,FS_NORMAL,FPF_ROMFONT};
 	struct Screen *s;
-	struct menuSokobana menu=obsluzMenu(w);
+
 	if (s=OpenScreenTags(NULL,
 		SA_Quiet,	TRUE,
 		SA_Depth,	4,
@@ -56,7 +56,7 @@ int main()
 		{
 			struct RastPort *rp=w->RPort;
 			narysujMenu(rp);
-			obsluzMenu(w);
+			struct menuSokobana menu=obsluzMenu(w);
 			CloseWindow(w);
 		}
 		CloseScreen(s);
